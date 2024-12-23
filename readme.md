@@ -24,21 +24,12 @@ php artisan vendor:publish --provider="SafeMailer\LaravelSafeMailer\SafeMailerSe
 
 This will create a `config/safemailer.php` file in your project.
 
-## Configuration
-
-The `safemailer.php` config file allows you to customize:
-
-```php
-return [
-    'api_key' => env('SAFEMAILER_API_KEY'),
-];
-```
 
 ## Usage
 
 ### Basic Usage
 
-1. Configure the SafeMailer transport in your `config/mail.php`:
+1. Configure the SafeMailer transport in your `config/mail.php`:             [CHECK]
 
 ```php
 'mailers' => [
