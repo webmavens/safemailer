@@ -1,5 +1,5 @@
 {
-    "name": "safemailer/laravel-safemailer",
+    "name": "safemailer/safemailer",
     "description": "A Laravel package for secure email attachments with expiration",
     "type": "library",
     "license": "MIT",
