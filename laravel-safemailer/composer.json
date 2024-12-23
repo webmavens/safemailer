@@ -1,0 +1,34 @@
+{
+    "name": "safemailer/laravel-safemailer",
+    "description": "A Laravel package for secure email attachments with expiration",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SafeMailer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "SafeMailer",
+            "email": "support@safemailer.io"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^11.0",
+        "aws/aws-sdk-php": "^3.334"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SafeMailer\\SafeMailerServiceProvider"
+            ],
+            "aliases": {
+                "SafeMailer": "SafeMailer\\SafeMailerFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+} 
