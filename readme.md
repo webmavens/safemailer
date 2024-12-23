@@ -16,7 +16,7 @@ composer require safemailer/laravel-safemailer
 SAFEMAILER_API_KEY=your_api_key_here
 ```
 
-3. Publish the configuration file:
+3. Publish the configuration file: [CHECK]
 
 ```bash
 php artisan vendor:publish --provider="SafeMailer\LaravelSafeMailer\SafeMailerServiceProvider"
