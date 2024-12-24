@@ -27,7 +27,10 @@
             "aliases": {
                 "SafeMailer": "SafeMailer\\SafeMailerFacade"
             }
-        }
+        },
+        "files": [
+        "config/safemailer.php"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true
