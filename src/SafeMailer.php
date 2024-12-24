@@ -20,10 +20,11 @@ class SafeMailer
     /**
      * Send an email with attachments
      */
-    public function sendEmail(string $recipientEmail, string $subject, string $content, string $expirationType = 'never', array $attachments = []): ?array
+    public function sendEmail(string $recipientEmail, string $subject, string $content, string $expirationType = 'never', array $attachments = [], string $fromEmail = null): ?array
     {
         Log::info('SafeMailer: Sending email', [
             'recipient' => $recipientEmail,
+            'from' => $fromEmail,
             'subject' => $subject,
             'has_api_key' => !empty($this->apiKey)
         ]);
@@ -34,6 +35,7 @@ class SafeMailer
                 'Accept' => 'application/json'
             ])->post("{$this->baseUrl}/emails", [
                 'recipient_email' => $recipientEmail,
+                'from_email' => $fromEmail,
                 'subject' => $subject,
                 'content' => $content,
                 'expiration_type' => $expirationType,
