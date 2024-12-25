@@ -7,7 +7,7 @@ A Laravel package for secure email attachments with expiration functionality.
 1. Install the package via Composer:
 
 ```bash
-composer require safemailer/laravel-safemailer
+composer require safemailer/safemailer
 ```
 
 2. Add your SafeMailer API key to your `.env` file:
