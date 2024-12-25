@@ -2,9 +2,9 @@
 
 namespace SafeMailer;
 
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Exception;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Http;
 
 class SafeMailer
 {
@@ -14,13 +14,20 @@ class SafeMailer
     public function __construct($apiKey)
     {
         $this->apiKey = $apiKey;
-        $this->baseUrl = config('safemailer.base_url');
+        $this->baseUrl = config('safemailer.base_url', 'https://api.safemailer.com');
     }
 
     /**
      * Send an email with attachments
      */
-    public function sendEmail(string $recipientEmail, string $subject, string $content, string $expirationType = 'never', array $attachments = [], string $fromEmail = null): ?array
+    public function sendEmail(
+        string $recipientEmail, 
+        string $subject, 
+        string $content, 
+        string $fromEmail = null,
+        string $expirationType = 'never', 
+        array $attachments = []
+    ): ?array
     {
         Log::info('SafeMailer: Sending email', [
             'recipient' => $recipientEmail,
@@ -35,7 +42,7 @@ class SafeMailer
                 'Accept' => 'application/json'
             ])->post("{$this->baseUrl}/emails", [
                 'recipient_email' => $recipientEmail,
-                'from_email' => $fromEmail,
+                'from_email' => env('MAIL_FROM_ADDRESS', 'hello@safemailer.com'),
                 'subject' => $subject,
                 'content' => $content,
                 'expiration_type' => $expirationType,

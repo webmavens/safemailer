@@ -38,13 +38,6 @@ class SafeMailerTransport implements TransportInterface
             Log::error('SafeMailerTransport: No recipient email found');
             throw new \Exception('No recipient email address specified');
         }
-        $fromEmail = null;
-        if ($envelope && $envelope->getSender()) {
-            $fromEmail = $envelope->getSender()->getAddress();
-        } elseif ($email->getFrom()) {
-            $fromEmail = $email->getFrom()[0]->getAddress();
-        }
-
 
         // Get expiration type from message metadata
         $expirationType = $message->getHeaders()->get('X-SafeMailer-Expiration-Type')?->getBodyAsString() ?? 'never';
@@ -54,7 +47,7 @@ class SafeMailerTransport implements TransportInterface
             recipientEmail: $recipientEmail,
             subject: $email->getSubject(),
             content: $email->getBody()->toString(),
-            fromEmail: $fromEmail,
+            fromEmail: env('MAIL_FROM_ADDRESS', 'hello@safemailer.com'),
             expirationType: $expirationType
         );
         
