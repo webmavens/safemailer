@@ -16,60 +16,25 @@ composer require safemailer/safemailer
 SAFEMAILER_API_KEY=your_api_key_here
 ```
 
-3. Publish the configuration file: [CHECK]
-
-```bash
-php artisan vendor:publish --provider="SafeMailer\LaravelSafeMailer\SafeMailerServiceProvider"
-```
-
-This will create a `config/safemailer.php` file in your project.
+3. Change MAIL_MAILER to be "safemailer"
 
 
-## Usage
+## Advanced Usage
 
-### Basic Usage
-
-1. Configure the SafeMailer transport in your `config/mail.php`:             [CHECK]
+1. To define a expiration for the email:
 
 ```php
-'mailers' => [
-    'safemailer' => [
-        'transport' => 'safemailer',
-    ],
-    // ... other mailers
-],
-```
-
-2. Create a Mailable class:
-
-```php
-use Illuminate\Mail\Mailable;
-
-class ExampleMail extends Mailable
-{
-    public function build()
-    {
-        return $this->view('emails.example')
-                    ->attach('/path/to/file.pdf')
-                    ->subject('Your Secure Document');
-    }
-}
-```
-
-3. Send the email using the SafeMailer transport:
-
-```php
-$expiresAt = 'one_time'; // or 'never'
+$expiresAt = 'one_time'; // or 'never' ('never' is default)
 
 Mail::mailer('safemailer')
     ->to($user)
     ->send(new ExampleMail($expiresAt));
 ```
 
-The SafeMailer transport will automatically handle secure file uploads and generate secure download links for any attachments.
 
 ### Available Methods
 
+FUTURE FEATURE:
 You can use all standard Laravel Mail attachment methods - SafeMailer will automatically secure them:
 
 ```php
@@ -84,18 +49,6 @@ You can use all standard Laravel Mail attachment methods - SafeMailer will autom
 // Attach multiple files
 ->attach('/path/to/file1.pdf')
 ->attach('/path/to/file2.pdf')
-```
-
-### Using with Laravel's Mail Facade
-
-```php
-use Illuminate\Support\Facades\Mail;
-
-$expiresAt = 'one_time'; // or 'never'
-
-Mail::mailer('safemailer')
-    ->to($user)
-    ->send(new ExampleMail($expiresAt));
 ```
 
 
