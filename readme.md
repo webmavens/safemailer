@@ -16,7 +16,7 @@ composer require safemailer/safemailer
 SAFEMAILER_API_KEY=your_api_key_here
 ```
 
-3. Change MAIL_MAILER to be "safemailer"
+3. Change MAIL_MAILER to be "safemailer" in your .env file
 
 
 ## Advanced Usage
