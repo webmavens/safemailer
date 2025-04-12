@@ -104,7 +104,7 @@ Common issues and solutions:
 ## Demo Video
 Watch the demo video to learn how to use this package:
 
-👉 [Click here to watch on YouTube]()
+👉 [Click here to watch on YouTube](https://youtu.be/V_f_GU7P9aI)
 
 ## Support
 
