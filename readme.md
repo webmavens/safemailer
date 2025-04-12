@@ -10,14 +10,18 @@ A Laravel package for secure email attachments with expiration functionality.
 composer require safemailer/safemailer
 ```
 
-2. Add your SafeMailer API key to your `.env` file:
+2. Add your SafeMailer(https://app.safemailer.io/) API key to your `.env` file:
 
 ```env
 SAFEMAILER_API_KEY=your_api_key_here
 ```
 
-3. Change MAIL_MAILER to be "safemailer" in your .env file
+3. Change MAIL_MAILER to be "safemailer" and MAIL_FROM_ADDRESS to be your mail in your .env file:
 
+```env
+MAIL_MAILER=safemailer
+MAIL_FROM_ADDRESS=YOUR_SAFE_MAILER_LOGIN_MAIL
+```
 
 ## Advanced Usage
 
@@ -30,7 +34,20 @@ Mail::mailer('safemailer')
     ->to($user)
     ->send(new ExampleMail($expiresAt));
 ```
+Pass Headers from ExampleMail:
 
+```php
+use Illuminate\Mail\Mailables\Headers;
+
+public function headers(): Headers
+{
+   return new Headers(
+      text: [
+            'X-SafeMailer-Expiration-Type' => $this->expirationType,
+      ],
+   );
+}
+```
 
 ### Available Methods
 
