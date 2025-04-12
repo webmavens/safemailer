@@ -101,6 +101,11 @@ Common issues and solutions:
    - Run `php artisan config:clear` after updating configuration
    - Verify published config file exists
 
+## Demo Video
+Watch the demo video to learn how to use this package:
+
+👉 [Click here to watch on YouTube]()
+
 ## Support
 
 For additional support:
